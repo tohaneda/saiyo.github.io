@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width">
+<title>社員紹介応募フォーム</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="entry.js" defer></script>
+</head>
+<body>
+    <div class="wrap">
+        <section id="form">
+            <h2 id="formTitle">代理応募</h2>
+            <form id="myForm" action="https://docs.google.com/forms/d/e/1FAIpQLSea5OPkiVc1AOmK10lAzG46RI3NFhv6JB4OqVYIAvOnbpWutw/formResponse" method="POST" target="hidden_iframe">
+                <h3 class="info-title">紹介者である社員の情報</h3>
+                <div class="employee-info">
+                    <div  class="employee-info-row">
+                        <span>氏名：</span>
+                        <div id="employee_name" class="employee-info-text"></div>
+                    </div>
+                    <input type="hidden" id="employee_name_input">
+                    <input type="hidden" id="employee_branch_input">
+                </div>
+                <h3 class="form-title">ご本人様情報の入力</h3>
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <th>お名前<span class="required-mark">※必須</span></th>
+                        <td id="name_input">
+                            <div class="input-with-suffix">
+                                <input id="name_body" type="text" required>
+                                <span class="suffix">様</span>
+                            </div>
+                            <p class="caution" id="name_bottom" hidden>※お名前を入力してください</p>
+                        </td>
+                        <td id="name"></td>
+                    </tr>
+                    <tr>
+                        <th>ご年齢<span class="required-mark">※必須</span></th>
+                        <td id="age_input">
+                            <div class="input-with-suffix">
+                                <input id="age_body" type="text" required>
+                                <span class="suffix">才</span>
+                            </div>
+                            <p class="caution" id="age_bottom" hidden>※年齢を入力してください</p>
+                        </td>
+                        <td id="age"></td>
+                    </tr>
+                    <tr>
+                        <th>性別</th>
+                        <td id="gender_input" class="radioOther">
+                            <label><input type="radio" value="男">男</label>
+                            <label><input type="radio" value="女">女</label>
+                            <label><input type="radio" value="その他">その他</label>
+                        </td>
+                        <td id="gender"></td>
+                    </tr>
+                    <tr>
+                        <th>メールアドレス<span class="required-mark">※必須</span></th>
+                        <td id="email_input">
+                            <input id="email_body" type="email" required>
+                            <p class="caution" id="email_bottom" hidden>※メールアドレスを入力してください</p>
+                        </td>
+                        <td id="email"></td>
+                    </tr>
+                    <tr>
+                        <th>電話番号<span class="required-mark">※必須</span></th>
+                        <td id="phone_input">
+                            <input id="phone_body" type="tel" required>
+                            <p class="caution" id="phone_bottom" hidden>※電話番号を入力してください</p>
+                        </td>
+                        <td id="phone"></td>
+                    </tr>
+                    <tr>
+                        <th>希望勤務地<span class="required-mark">※必須</span></th>
+                        <td id="location_input">
+                            <input id="location_body" type="text" equired>
+                            <p class="caution" id="location_bottom" hidden>※希望勤務地を入力してください</p>
+                        </td>
+                        <td id="location"></td>
+                    </tr>
+                    <tr>
+                        <th>その他、留意事項等</th>
+                        <td id="notes_input">
+                            <textarea id="notes_body" rows="4"></textarea>
+                        </td>
+                        <td id="notes"></td>
+                    </tr>
+                    <tr id="consent-row">
+                        <th>入社希望者本人の承諾<span class="required-mark">※必須</span></th>
+                        <td id="consent_input" class="radioOther">
+                            <label><input type="radio" value="はい">はい</label>
+                            <label><input type="radio" value="いいえ">いいえ</label>
+                            <p class="caution" id="consent_bottom1" hidden></p>
+                            <p class="caution" id="consent_bottom2" hidden></p>
+                        </td>
+                        <td id="consent"></td>
+                    </tr>
+                    <tr class="privacy-policy">
+                        <td colspan="3">
+                            <div class="policy-content">
+                                今回、お送り頂いた個人情報につきましては、お問合せに対する回答のご連絡以外で利用することはございません。
+                                <span class="policy-link">
+                                    <a href="">個人情報保護に関する基本方針（プライバシーポリシー）</a>
+                                </span>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <table class="send_area" cellpadding="0" cellspacing="0">
+                    <td><button id="confirm" type="button">確認</button></td>
+                    <!-- 確認ページボタン -->
+                    <td class="button">
+                        <button id="correct" type="button" hidden>入力画面へ戻る</button>
+                        <button id="submit" type="submit" hidden>この内容で応募する</button>
+                    </td>
+                </table>
+            </form>
+        </section>
+    </div>
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+</body>
+</html> 

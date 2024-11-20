@@ -1,0 +1,203 @@
+@charset "utf-8";
+
+/* 基本スタイル */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Noto Serif JP', serif;
+  background: #f5f5f5;
+}
+
+.wrap {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+#form {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+h2 {
+  margin: 0;
+  padding: 10px 0;
+  font-size: 1.2rem;
+  border-bottom: 2px solid #0066cc;
+  color: #333;
+}
+
+.info-section {
+  margin: 20px 0;
+  padding: 15px;
+  /* background: #f8f8f8; */
+  border-radius: 4px;
+}
+
+.info-section h3 {
+  font-size: 1rem;
+  margin: 0 0 10px 0;
+  color: #666;
+}
+
+.employee-info p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+table {
+  width: 100%;
+  margin: 20px 0;
+  border-collapse: separate;
+  border-spacing: 0 15px;
+}
+
+th {
+  width: 30%;
+  text-align: left;
+  font-size: 0.9rem;
+  font-weight: normal;
+  padding-right: 15px;
+  vertical-align: top;
+}
+
+.required-mark {
+  color: #ff4444;
+  font-size: 0.8rem;
+  margin-left: 5px;
+}
+
+td input[type="text"],
+td input[type="number"],
+td input[type="email"],
+td input[type="tel"],
+td textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.radioOther {
+  display: flex;
+  gap: 20px;
+}
+
+.radioOther label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.9rem;
+}
+
+.suffix {
+  margin-left: 5px;
+  font-size: 0.9rem;
+}
+
+.caution {
+  color: #ff4444;
+  font-size: 0.8rem;
+  margin: 5px 0 0 0;
+}
+
+.send_area {
+  margin-top: 30px;
+  text-align: center;
+}
+
+button {
+  padding: 10px 40px;
+  border: none;
+  border-radius: 4px;
+  background: #0066cc;
+  color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0052a3;
+}
+
+button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+#correct {
+  background: #666;
+  margin-right: 10px;
+}
+
+#correct:hover {
+  background: #555;
+}
+
+.input-with-suffix {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.input-with-suffix input {
+    flex: 1;
+}
+
+#age_input .input-with-suffix input {
+    width: 80px !important;
+    flex: none;
+}
+
+.suffix {
+    white-space: nowrap;
+    color: #333;
+}
+
+.privacy-policy td {
+    padding: 20px 0;
+}
+
+.policy-content {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: #666;
+}
+
+.policy-link {
+    display: block;
+    margin-top: 10px;
+}
+
+.policy-link a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.policy-link a:hover {
+    text-decoration: underline;
+}
+
+.form-title {
+  background: #D2EAF8;
+  border: 1px solid #0093BE;
+}
+
+.info-title {
+  background: #D2EAF8;
+  border: 1px solid #0093BE;
+} 
+
+.employee-info-row {
+  display: flex;
+  gap: 10px;
+}
+
+.employee-info-text {
+  text-align: right;
+  flex: 1;
+}
