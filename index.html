@@ -6,123 +6,301 @@
 <meta name="viewport" content="width=device-width">
 <title>社員紹介応募フォーム</title>
 <meta name="description" content="">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<script src="entry.js" defer></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/recruit.css?v4">
+<link rel="stylesheet" href="css/entry.css?v2">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> 
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 </head>
 <body>
-    <div class="wrap">
-        <section id="form">
-            <h2 id="formTitle">代理応募</h2>
-            <form id="myForm" action="https://docs.google.com/forms/d/e/1FAIpQLSea5OPkiVc1AOmK10lAzG46RI3NFhv6JB4OqVYIAvOnbpWutw/formResponse" method="POST" target="hidden_iframe">
-                <h3 class="info-title">紹介者である社員の情報</h3>
-                <div class="employee-info">
-                    <div  class="employee-info-row">
-                        <span>氏名：</span>
-                        <div id="employee_name" class="employee-info-text"></div>
-                    </div>
-                    <input type="hidden" id="employee_name_input">
-                    <input type="hidden" id="employee_branch_input">
-                </div>
-                <h3 class="form-title">ご本人様情報の入力</h3>
-                <table cellpadding="0" cellspacing="0">
-                    <tr>
-                        <th>お名前<span class="required-mark">※必須</span></th>
-                        <td id="name_input">
-                            <div class="input-with-suffix">
-                                <input id="name_body" type="text" required>
-                                <span class="suffix">様</span>
-                            </div>
-                            <p class="caution" id="name_bottom" hidden>※お名前を入力してください</p>
-                        </td>
-                        <td id="name"></td>
-                    </tr>
-                    <tr>
-                        <th>ご年齢<span class="required-mark">※必須</span></th>
-                        <td id="age_input">
-                            <div class="input-with-suffix">
-                                <input id="age_body" type="text" required>
-                                <span class="suffix">才</span>
-                            </div>
-                            <p class="caution" id="age_bottom" hidden>※年齢を入力してください</p>
-                        </td>
-                        <td id="age"></td>
-                    </tr>
-                    <tr>
-                        <th>性別</th>
-                        <td id="gender_input" class="radioOther">
-                            <label><input type="radio" value="男">男</label>
-                            <label><input type="radio" value="女">女</label>
-                            <label><input type="radio" value="その他">その他</label>
-                        </td>
-                        <td id="gender"></td>
-                    </tr>
-                    <tr>
-                        <th>メールアドレス<span class="required-mark">※必須</span></th>
-                        <td id="email_input">
-                            <input id="email_body" type="email" required>
-                            <p class="caution" id="email_bottom" hidden>※メールアドレスを入力してください</p>
-                        </td>
-                        <td id="email"></td>
-                    </tr>
-                    <tr>
-                        <th>電話番号<span class="required-mark">※必須</span></th>
-                        <td id="phone_input">
-                            <input id="phone_body" type="tel" required>
-                            <p class="caution" id="phone_bottom" hidden>※電話番号を入力してください</p>
-                        </td>
-                        <td id="phone"></td>
-                    </tr>
-                    <tr>
-                        <th>希望勤務地<span class="required-mark">※必須</span></th>
-                        <td id="location_input">
-                            <input id="location_body" type="text" equired>
-                            <p class="caution" id="location_bottom" hidden>※希望勤務地を入力してください</p>
-                        </td>
-                        <td id="location"></td>
-                    </tr>
-                    <tr>
-                        <th>その他、留意事項等</th>
-                        <td id="notes_input">
-                            <textarea id="notes_body" rows="4"></textarea>
-                        </td>
-                        <td id="notes"></td>
-                    </tr>
-                    <tr id="consent-row">
-                        <th>入社希望者本人の承諾<span class="required-mark">※必須</span></th>
-                        <td id="consent_input" class="radioOther">
-                            <label><input type="radio" value="はい">はい</label>
-                            <label><input type="radio" value="いいえ">いいえ</label>
-                            <p class="caution" id="consent_bottom1" hidden></p>
-                            <p class="caution" id="consent_bottom2" hidden></p>
-                        </td>
-                        <td id="consent"></td>
-                    </tr>
-                    <tr class="privacy-policy">
-                        <td colspan="3">
-                            <div class="policy-content">
-                                今回、お送り頂いた個人情報につきましては、お問合せに対する回答のご連絡以外で利用することはございません。
-                                <span class="policy-link">
-                                    <a href="">個人情報保護に関する基本方針（プライバシーポリシー）</a>
-                                </span>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-                <table class="send_area" cellpadding="0" cellspacing="0">
-                    <td><button id="confirm" type="button">確認</button></td>
-                    <!-- 確認ページボタン -->
-                    <td class="button">
-                        <button id="correct" type="button" hidden>入力画面へ戻る</button>
-                        <button id="submit" type="submit" hidden>この内容で応募する</button>
-                    </td>
-                </table>
-            </form>
-        </section>
+<div class="outline_wrap">
+  <h1><img src="image/img-mv.jpg" alt="営業で広がる未来へ あなたの次の一歩を応援します"></h1>
+  <img class="logo" src="image/logo.png" alt="TOKEN">
+  <section id="company">
+    <h2>会社紹介</h2>
+    <figure>
+      <figcaption>会社説明（動画）</figcaption>
+      <div id="video"><img src="image/thumb-vi01.jpg" alt=""><i class="fa-regular fa-circle-play"></i></div>
+    </figure>
+    <figure>
+      <figcaption>仕事内容のご紹介（動画）</figcaption>
+      <div id="video2"><img src="image/thumb-vi02.jpg?v2" alt=""><i class="fa-regular fa-circle-play"></i></div>
+    </figure>
+  </section>
+  <section id="job">
+    <h2>募集職種</h2>
+    <p>総勢5,000名を超える社員と共に、TOKENグループは日々成長を続け、これまで確かな実績を築いてきました。<br>
+      私たちは今、さらなる飛躍を支える新しい仲間を求めています。ビジネスの最前線で次の時代をリードする営業のプロフェッショナルとして、共に挑戦していきましょう。</p>
+    <img class="img-01" src="image/img-01.jpg" alt=""> </section>
+  <div id="summary">
+    <button>募集要項をみる<i class="fa-solid fa-angle-down"></i></button>
+    <div class="toggle_box">
+      <table>
+        <tr>
+          <th>応募資格</th>
+          <td>・高卒以上<br>
+            ・要普通自動車運転免許</td>
+        </tr>
+        <tr>
+          <th>給与</th>
+          <td>月額26万3,000円以上+諸手当+業績連動成果給
+            <ul class="circle">
+              <li> 弊社営業職の平均年収819万円<br>
+                （固定給月給26万3,000円＋賞与＋業績		連動成果給）</li>
+              <li>一律3万円の都市手当を支給<br>
+                （首都圏内で弊社指定の事業所に勤務する方）</li>
+              <li>初受注祝い金を支給<br>
+                入社8ヵ月以内の初受注者に50万円、入社8ヵ月超～1ヵ年以内の初受注者に25万円を着工月の翌月に支給します。</li>
+              <li>固定残業代【51～70時間分（7万3,800円～10万4,500円）】が含まれます。<br>
+                固定残業代の時間数を超える時間外労働は追加で支給します。<br>
+                ただし、36協定（特別条項）締結済により月45時間を超え、60時間までの残業は年6回を限度とします。<br>
+                なお、弊社の営業職の月平均残業時間は10～20時間程度です。</li>
+            </ul>
+            <dl>
+              <dt>年収例<br><span>※下記成果給は個人の業績によります。</span></dt>
+              <dd>
+                <p>1,191万円（入社5年／47歳例）<br>
+                  ・固定給年額797万円＋成果給394万円（既婚・子供あり）</p>
+                <p>933万円（入社3年／43歳例）<br>
+                  ・固定給年額610万円＋成果給323万円（既婚）</p>
+                <p>835万円（入社2年／30歳例）<br>
+                  ・固定給年額568万円＋成果給267万円</p>
+              </dd>
+            </dl></td>
+        </tr>
+        <tr>
+          <th>勤務時間</th>
+          <td>10～19時<br>
+            <span class="kome">※時間外労働は所属長の許可を得ない限り実施不可</span></td>
+        </tr>
+        <tr>
+          <th>休日・休暇</th>
+          <td>完全週休2日制（日・月）、祝日、受注休暇（営業職のみ）、夏季・年末年始休暇、有給休暇、産前・産後休暇、介護休暇、子の看護休暇、慶弔休暇、永年勤続休暇、災害休暇、療養休暇など<br>
+            <span class="kome">※年間休日127日（2024年度）</span></td>
+        </tr>
+        <tr>
+          <th>昇給</th>
+          <td>年1回</td>
+        </tr>
+        <tr>
+          <th>賞与</th>
+          <td>年2回</td>
+        </tr>
+      </table>
     </div>
-    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+  </div>
+  <section>
+    <h2>ご応募の流れ</h2>
+    <ol class="slider">
+      <li> <img src="image/thumb-01.png" alt="STEP1 ご本人情報の入力">
+        <dl>
+          <dt>STEP1<br>
+            ご本人情報の入力</dt>
+          <dd>応募フォームからご本人の情報をご入力いただきます。<br>
+            その後、弊社担当者より面接のご案内をいたします。</dd>
+        </dl>
+      </li>
+      <li> <img src="image/thumb-02.png" alt="STEP2 面接">
+        <dl>
+          <dt>STEP2<br>
+            面接</dt>
+          <dd>ご入力情報から最適な事業所を選定し、面接を実施いたします。<br>
+            面接後、近日中に弊社担当者より、結果のご連絡をいたします。</dd>
+        </dl>
+      </li>
+      <li> <img src="image/thumb-03.png" alt="STEP3 ご入社">
+        <dl>
+          <dt>STEP3<br>
+            ご入社</dt>
+          <dd>面接の結果、見事合格された方はTOKENへご入社いただきます。<br>
+            スタッフ一同、万全の受け入れ態勢でお待ちしております。</dd>
+        </dl>
+      </li>
+    </ol>
+  </section>
+  <section id="contact">
+    <h2>お問合せ</h2>
+    <b class="corp">東建コーポレーション株式会社</b>
+    <p>お電話でのお問合せは</p>
+    <dl class="tel">
+      <dt>採用課代表</dt>
+      <dd>052-232-8013</dd>
+    </dl>
+    <b class="time">営業時間 10:00-19:00（毎週火・水定休）</b> </section>
+  <div id="fixed_btn"><a href="">応募フォームへ</a></div>
+</div>
+<div class="entry_wrap">
+  <section id="form">
+    <h2 id="formTitle">代理応募</h2>
+    <button id="entryClose"><i class="fa-solid fa-xmark"></i></button>
+    <form id="myForm" action="https://docs.google.com/forms/d/e/1FAIpQLSea5OPkiVc1AOmK10lAzG46RI3NFhv6JB4OqVYIAvOnbpWutw/formResponse" method="POST" target="hidden_iframe">
+      <h3 class="info-title">紹介者である弊社社員の情報</h3>
+      <div class="employee-info">
+        <div  class="employee-info-row"> <span>氏名：</span>
+          <div id="employee_name" class="employee-info-text"></div>
+        </div>
+        <input type="hidden" id="employee_name_input">
+        <input type="hidden" id="employee_branch_input">
+      </div>
+      <h3 class="form-title">ご本人様情報の入力</h3>
+			<div class="table_wrap">
+				<p class="f-bold">1.ご本人様情報についてご入力ください。</p>
+				<table cellpadding="0" cellspacing="0">
+					<tr>
+						<th>お名前<span class="required-mark">※必須</span></th>
+						<td id="name_input"><div class="input-with-suffix">
+								<input id="name_body" type="text" required>
+								<span class="suffix">様</span> </div>
+							<p class="caution" id="name_bottom" hidden>※お名前を入力してください</p></td>
+						<td id="name"></td>
+					</tr>
+					<tr>
+						<th>ご年齢<span class="required-mark">※必須</span></th>
+						<td id="age_input"><div class="input-with-suffix">
+								<input id="age_body" type="text" required>
+								<span class="suffix">歳</span> </div>
+							<p class="caution" id="age_bottom" hidden>※年齢を入力してください</p></td>
+						<td id="age"></td>
+					</tr>
+					<tr>
+						<th>性別</th>
+						<td id="gender_input" class="radioOther"><label>
+								<input type="radio" value="男">
+								男</label>
+							<label>
+								<input type="radio" value="女">
+								女</label>
+							<label>
+								<input type="radio" value="その他">
+								その他</label></td>
+						<td id="gender"></td>
+					</tr>
+					<tr>
+						<th>メールアドレス<!--<span class="required-mark">※必須</span>--></th>
+						<td id="email_input"><input id="email_body" type="email" required>
+							<p class="caution" id="email_bottom" hidden>※メールアドレスを入力してください</p></td>
+						<td id="email"></td>
+					</tr>
+					<tr>
+						<th>電話番号<span class="required-mark">※必須</span></th>
+						<td id="phone_input"><input id="phone_body" type="tel" required>
+							<p class="caution" id="phone_bottom" hidden>※電話番号を入力してください</p></td>
+						<td id="phone"></td>
+					</tr>
+				</table>
+				<p class="mt1 f-bold">2.ご希望される勤務地について教えてください。<br><span class="required-mark">※必須</span></p>
+				<table cellpadding="0" cellspacing="0">
+					<tr>
+						<th>希望勤務地<!--<span class="required-mark">※必須</span>--></th>
+						<td id="location_input"><input id="location_body" type="text" equired>
+							<p class="caution" id="location_bottom" hidden>※希望勤務地を入力してください</p></td>
+						<td id="location"></td>
+					</tr>
+				</table>
+				<p class="mt1 f-bold">3.その他、留意事項等あれば教えてください。</p>
+				<table cellpadding="0" cellspacing="0" class="other">
+					<tr>
+						<td rowspan="2" id="notes_input"><textarea id="notes_body" rows="5"></textarea></td>
+						<td rowspan="2" id="notes"></td>
+					</tr>
+					<tr id="consent-row">
+						<th>入社希望者本人の承諾<span class="required-mark">※必須</span></th>
+						<td id="consent_input" class="radioOther"><label>
+								<input type="radio" value="はい">
+								はい</label>
+							<label>
+								<input type="radio" value="いいえ">
+								いいえ</label>
+							<p class="caution" id="consent_bottom1" hidden></p>
+							<p class="caution" id="consent_bottom2" hidden></p></td>
+						<td id="consent"></td>
+					</tr>
+				</table>
+				<p class="privacy-policy">今回、お送り頂いた個人情報につきましては、お問合せに対する回答のご連絡以外で利用することはございません。 <span class="policy-link"> <a href="">個人情報保護に関する基本方針（プライバシーポリシー）</a></span></p>
+			</div>
+      <table class="send_area" cellpadding="0" cellspacing="0">
+        <td><button id="confirm" type="button">確認</button></td>
+				<!-- 確認ページボタン -->
+				<td class="button"><button id="correct" type="button" hidden>入力画面へ戻る</button>
+					<button id="submit" type="submit" hidden>この内容で応募する</button></td>
+      </table>
+    </form>
+  </section>
+</div>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+<!--JStream動画設定ここから--> 
+<script src="https://ssl-cache.stream.ne.jp/www50/eqd145gamd/jmc_pub/jmc_swf/player/t3/obj.js" charset="UTF-8"></script> 
+<script src="https://webcdn.token.co.jp/www08/token/cmn/js/jquery_jstream_movie_player.js" charset="UTF-8"></script> 
+<script>
+var player = new JMoviePlayer();
+player.setJMovie("#video","MjA4Mg==");
+player.setJMovie("#video2","MjA4MQ==");
+</script> 
+<!--JStream動画設定ここまで--> 
+<script>
+	$(document).ready(function() {
+		$('#summary button').click(function() {
+			var $toggleBox = $('.toggle_box');
+			var $summary = $('#summary');
+			var $table = $toggleBox.find('table');
+
+			if ($summary.hasClass('open')) {
+				$toggleBox.css('height', '0px');
+				$summary.removeClass('open');
+			} else {
+				var autoHeight = $table.outerHeight(true);
+				$toggleBox.css('height', autoHeight + 'px');
+				$summary.addClass('open');
+			}
+		});
+		
+		$('.slider').slick({
+			centerMode: true,
+			centerPadding: '80px',
+			slidesToShow: 1,
+			infinite: false,
+			prevArrow: '<div class="slick-prev"><i class="fa-solid fa-arrow-left"></i></div>',
+			nextArrow: '<div class="slick-next"><i class="fa-solid fa-arrow-right"></i></div>',
+			responsive: [
+				{
+					breakpoint: 860,
+					settings: {
+						centerPadding: '10.233vw',
+					}
+				}
+			]
+		});
+		
+		$('#entryClose').click(function() {
+			$('body').removeClass('entry_open');
+		});
+		$('#fixed_btn a').click(function() {
+			$('body').addClass('entry_open');
+			return false;
+		});
+	});
+	
+	(function() {
+		// Check if the device is in portrait mode
+		if (window.matchMedia("(orientation: portrait)").matches) {
+			// Check if the device width is 860px or more
+			if (window.innerWidth >= 860) {
+				// Find the existing viewport meta tag
+				var viewportMeta = document.querySelector('meta[name="viewport"]');
+				if (viewportMeta) {
+					// Update the content attribute to set the width to 860px
+					viewportMeta.setAttribute('content', 'width=860');
+				}
+			}
+		}
+	})();
+</script> 
+<script src="entry.js" defer></script>
 </body>
-</html> 
+</html>

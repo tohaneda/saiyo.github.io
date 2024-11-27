@@ -202,12 +202,14 @@ function submitForm(form) {
 // 確認画面のバリデーション
 function confirmForm(appType) {
     let isValid = true;
+    let firstInvalidElement = null;
 
     // 名前のバリデーション
     if (document.getElementById("name_body").value === '') {
         document.getElementById("name_bottom").hidden = false;
         document.getElementById("name_bottom").innerHTML = "※お名前を入力してください";
         isValid = false;
+        if (!firstInvalidElement) firstInvalidElement = document.getElementById("name_body");
     } else {
         document.getElementById("name_bottom").hidden = true;
     }
@@ -218,6 +220,7 @@ function confirmForm(appType) {
         document.getElementById("age_bottom").hidden = false;
         document.getElementById("age_bottom").innerHTML = "※年齢を入力してください";
         isValid = false;
+        if (!firstInvalidElement) firstInvalidElement = document.getElementById("age_body");
     } else {
         document.getElementById("age_bottom").hidden = true;
     }
@@ -229,6 +232,7 @@ function confirmForm(appType) {
         document.getElementById("email_bottom").hidden = false;
         document.getElementById("email_bottom").innerHTML = "※メールアドレスを入力してください";
         isValid = false;
+        if (!firstInvalidElement) firstInvalidElement = document.getElementById("email_body");
     } else {
         document.getElementById("email_bottom").hidden = true;
     }
@@ -242,6 +246,7 @@ function confirmForm(appType) {
         document.getElementById("phone_bottom").hidden = false;
         document.getElementById("phone_bottom").innerHTML = "※電話番号を入力してください";
         isValid = false;
+        if (!firstInvalidElement) firstInvalidElement = document.getElementById("phone_body");
     } else {
         document.getElementById("phone_bottom").hidden = true;
     }
@@ -251,6 +256,7 @@ function confirmForm(appType) {
         document.getElementById("location_bottom").hidden = false;
         document.getElementById("location_bottom").innerHTML = "※希望勤務地を入力してください";
         isValid = false;
+        if (!firstInvalidElement) firstInvalidElement = document.getElementById("location_body");
     } else {
         document.getElementById("location_bottom").hidden = true;
     }
@@ -264,12 +270,14 @@ function confirmForm(appType) {
         document.getElementById("consent_bottom2").innerHTML = "※本人の承諾がない場合は送信できません";
         document.getElementById("consent_bottom1").hidden = true;
         isValid = false;
+        if (!firstInvalidElement) firstInvalidElement = document.getElementById("consent_input");
     } else if ((!consentElements[0].checked && !consentElements[1].checked) && appType === '1') {
         // 承諾の有無を選択していない
         document.getElementById("consent_bottom1").hidden = false;
         document.getElementById("consent_bottom1").innerHTML = "※承諾の有無を選択してください";
         document.getElementById("consent_bottom2").hidden = true;
         isValid = false;
+        if (!firstInvalidElement) firstInvalidElement = document.getElementById("consent_input");
     } else {
         document.getElementById("consent_bottom1").hidden = true;
         document.getElementById("consent_bottom2").hidden = true;
@@ -284,18 +292,18 @@ function confirmForm(appType) {
         document.getElementById("submit").hidden = false;
 
         // プライバシーポリシー行を非表示
-        document.querySelector('tr.privacy-policy').hidden = true;
+        document.querySelector('p.privacy-policy').hidden = true;
 
         // 必須マークの非表示
         document.querySelectorAll(".required-mark").forEach(element => {
             element.hidden = true;
         });
-        document.getElementById("formTitle").innerHTML = '確認';
+        document.getElementById("formTitle").innerHTML = '応募内容の確認';
 
         // 確認画面表示の処理
         displayConfirmationValues();
     } else {
-        scrollToForm();
+        scrollToForm(firstInvalidElement);
     }
 }
 
@@ -354,11 +362,11 @@ function originalForm() {
 }
 
 // フォームスクロール
-function scrollToForm() {
-    const formElement = document.querySelector('#form');
-    const topOfForm = formElement.getBoundingClientRect().top + window.pageYOffset;
-    window.scrollTo({
-        top: topOfForm,
-        behavior: 'smooth'
-    });
+function scrollToForm(element) {
+	console.log(element);
+	const topOfForm = $(element).position().top;
+	console.log($(element).position().top);
+	$('#myForm').animate({
+		scrollTop: topOfForm
+	}, 1000);
 }
